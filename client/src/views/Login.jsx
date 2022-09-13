@@ -1,10 +1,11 @@
 import React from 'react'
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import { authentification } from '../services/auth.service'
 import { userLogin } from '../features/user/user-slice'
+import * as Storage from '../services/Storage'
 
 const Login = () => {
 
@@ -14,14 +15,15 @@ const Login = () => {
 	const [email, setEmail] = useState()
 	const [password, setPassword] = useState()
 
+
 	const handleSubmit = (event) => {
 		event.preventDefault()
 		authentification(email, password)
 			.then( (data) => {
-				console.log(data)
 				dispatch( userLogin(data) )
-				localStorage.setItem( 'token', data.token )
-				navigate('/home')
+				Storage.setToken(data.token)
+				Storage.setUser(data.user)
+				navigate('/')
 			})
 	}
 

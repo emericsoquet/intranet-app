@@ -1,5 +1,5 @@
 import React from 'react'
-import { getCoworkers } from '../services/coworkers.service'
+import * as Users from '../services/users.service'
 
 export default function Coworkers() {
     return (

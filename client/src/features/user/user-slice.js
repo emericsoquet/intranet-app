@@ -6,13 +6,20 @@ const initialState = {
 
 const userSlice = createSlice({
     name: 'user',
-    initialState,
+    initialState: {
+        userInfo: {}
+    },
     reducers: {
-        userLogin: (state, {payload})=> {
-            state.user = payload;
+        userLogin: (state, { payload }) => {
+            state.userInfo = payload
         },
+        userLogout: (state) => {
+            state.userInfo = {}
+            localStorage.removeItem('token')
+            localStorage.removeItem('userId')
+        }
     }
 })
 
-export const { userLogin } = userSlice.actions
+export const { userLogin, userLogout } = userSlice.actions
 export default userSlice.reducer
