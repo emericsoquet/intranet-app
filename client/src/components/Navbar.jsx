@@ -6,6 +6,8 @@ import { useNavigate, NavLink } from 'react-router-dom';
 import { userLogout } from '../features/user/user-slice'
 import * as Storage from '../services/Storage'
 
+import styles from '../assets/styles/components/Navbar.module.scss'
+
 export default function Navbar() {
 
     // des essais pour raccourcir Storage.getUser().payload.user

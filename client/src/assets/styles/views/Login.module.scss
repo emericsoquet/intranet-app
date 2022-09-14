@@ -1,0 +1,88 @@
+@import '../partials.scss';
+
+.login {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .wrapper {
+        max-width: 400px;
+        background: $light;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba($dark, .1);
+        font-size: 300;
+        color: $dark;
+        padding: 30px;
+        padding-bottom: 6.5rem;
+        position: relative;
+
+        h2 {
+            text-transform: lowercase;
+            color: $primaryBg;
+            font-weight: 100;
+            font-size: 3.5rem;
+            text-align: center;
+            color: $light;
+            position: absolute;
+            top: -5rem;
+            right: 0;
+            left: 0;
+            @include min-width(sm) {
+                font-size: 4.25rem;
+                top: -6.25rem;
+            }
+        }
+        .subtitle {
+            font-family: $headings;
+            /* text-transform: uppercase; */
+            font-weight: 300;
+            text-align: center;
+            opacity: .75;
+            margin: 0 auto 3.5rem auto;
+            max-width: 340px;
+            span {
+                font-weight: 400;
+            }
+        }
+
+        input {
+            background: none;
+            appearance: none;
+            border: none;
+            border-bottom:  .5px $dark solid;
+            padding-bottom: .5rem;
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            color: darken($primaryBtn, 10%);
+            opacity: .8;
+            margin: 2rem auto;
+            font-size: .9rem;
+        }
+        label {
+            display: none;
+        }
+
+        button {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            width: 100%;
+            text-transform: uppercase;
+            font-weight: 200;
+            background: $primaryBg;
+            color: $light;
+            font-family: $headings;
+            padding: 1rem;
+            font-size: 1.15rem;
+            overflow: hidden;
+            border-radius: 0 0 10px 10px;
+            background: $primaryBtn;
+            transition: background .4s;
+            &:hover {
+                background: darken($primaryBtn, 10%);
+            }
+        }
+    }
+}

@@ -24,13 +24,13 @@ export default function Home() {
 	console.log(coworker)
 
 	return (
-		<section>
+		<main className={`main`}>
 			{ coworker && 
 				<>
 					<h2>Connaissez-vous { coworker.firstname } ?</h2>
 					<button onClick={newRandomUser}>Charger</button>
 				</>
 			}
-		</section>
+		</main>
 	)
 }

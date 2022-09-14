@@ -1,7 +1,23 @@
 @import 'partials.scss';
 
 body {
-    background: $primaryBg;
+    padding: 0;
+    margin: 0;
+    background: rgb(164,98,173);
+    background: -moz-linear-gradient(180deg, rgba(164,98,173,1) 40%, rgba(176,118,184,1) 68%, rgba(194,148,200,1) 100%);
+    background: -webkit-linear-gradient(180deg, rgba(164,98,173,1) 40%, rgba(176,118,184,1) 68%, rgba(194,148,200,1) 100%);
+    background: linear-gradient(180deg, rgba(164,98,173,1) 40%, rgba(176,118,184,1) 68%, rgba(194,148,200,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#a462ad",endColorstr="#c294c8",GradientType=1);
     color: $light;
     font-family: $mainFont;
+
+    button {
+        appearance: none;
+        background: none;
+        border: none;
+    }
+
+    .main {
+        min-height: calc(100vh - 70px);
+    }
 }

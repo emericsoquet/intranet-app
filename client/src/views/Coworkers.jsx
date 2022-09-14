@@ -52,47 +52,40 @@ export default function Coworkers() {
 
 
     return (
-        <section>
+        <section className="container">
 
-            <Searchbar setSearch={ setSearch } setSearchType={ setSearchType } setCategory={ setCategory } />
+            <div className="row">
 
-            { (search === '' && category === '') ? // si le champ texte est vide et pas de service sélectionné
-                <>
-                    { coworkers && coworkers?.map( (element, index) => {
-                        return ( 
-                            <article key={ index }>
-                                <p>{ element.firstname } { element.lastname }</p>
-                                <p>{ element.city }, { element.country }</p>
-                                <p>{ element.service }</p>
-                            </article>
-                        )
-                    }) }
-                </>
-                : 
-                <>
-                    { filtered && filtered?.map( (element, index) => {
-                        return ( 
-                            <article key={ index }>
-                                <p>{ element.firstname } { element.lastname }</p>
-                                <p>{ element.city }, { element.country }</p>
-                                <p>{ element.service }</p>
-                                <p>{ element.gender }</p>
-                            </article>
-                        )
-                    }) }
-                </>
-            }
-            {/* {
-                coworkers && coworkers?.map( (element, index) => {
-                    return ( 
-                        <article key={ index }>
-                            <p>{ element.firstname }</p>
-                            <p>{ element.city }, { element.country }</p>
-                            <p>{ element.service }</p>
-                        </article>
-                    )
-                })
-            } */}
+                <Searchbar setSearch={ setSearch } setSearchType={ setSearchType } setCategory={ setCategory } />
+
+                { (search === '' && category === '') ? // si le champ texte est vide et pas de service sélectionné
+                    <>
+                        { coworkers && coworkers?.map( (element, index) => {
+                            return ( 
+                                <article key={ index }>
+                                    <p>{ element.firstname } { element.lastname }</p>
+                                    <p>{ element.city }, { element.country }</p>
+                                    <p>{ element.service }</p>
+                                </article>
+                            )
+                        }) }
+                    </>
+                    : 
+                    <>
+                        { filtered && filtered?.map( (element, index) => {
+                            return ( 
+                                <article key={ index }>
+                                    <p>{ element.firstname } { element.lastname }</p>
+                                    <p>{ element.city }, { element.country }</p>
+                                    <p>{ element.service }</p>
+                                    <p>{ element.gender }</p>
+                                </article>
+                            )
+                        }) }
+                    </>
+                }
+                
+            </div>
         </section>
     )
 }
