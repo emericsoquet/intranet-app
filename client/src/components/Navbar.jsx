@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, NavLink } from 'react-router-dom';
 
-import userLogout from '../features/user/user-slice'
+import { userLogout } from '../features/user/user-slice'
 import * as Storage from '../services/Storage'
 
 export default function Navbar() {
@@ -46,7 +46,7 @@ export default function Navbar() {
                                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                                     <li className="nav-item">
                                         <span className="nav-link">
-                                            Bonjour <NavLink to="/profile">{Storage.getUser().firstname}</NavLink> !
+                                            Bonjour <NavLink to={`/user/${ Storage.getUser().id }`}>{Storage.getUser().firstname}</NavLink> !
                                         </span>
                                     </li>
                                     <li className="nav-item">

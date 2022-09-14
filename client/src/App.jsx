@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Routes, Route, useNavigate } from 'react-router-dom'
+import { Routes, Route, Router, useNavigate } from 'react-router-dom'
 
 import { getUser } from './services/users.service'
 import * as Storage from './services/Storage'
@@ -12,35 +12,28 @@ import Coworkers from './views/Coworkers'
 import Profile from './views/Profile'
 import Error from './views/Error'
 
+import { UserRoute } from './utils/PrivateRoutes'
+
 function App() {
 
 	const navigate = useNavigate() 
 	const dispatch = useDispatch()
-
-	/* const user = useSelector((state) => state.user); */
-
-	/* if( Storage.getToken() ) {
-		const id = Storage.getUserId()
-		console.log(id)
-		const currentUser = getUser(id).then( (data) => {
-				console.log(data.firstname)
-			}
-		)
-	} */
-
 
 	return (
 		<div className="App">
 			<Navbar />
 			<Routes>
 				<Route path="/login" element={ <Login /> } />
-				<Route path="/" element={ <Home /> } />
-				<Route path="/profile" element={ <Profile /> } />
-				<Route path="/coworkers" element={ <Coworkers /> } />
+				<Route path="/user/:id" element={ <Profile /> } />
 				<Route path="*" element={ <Error /> }></Route>
+				<Route element={ <UserRoute /> }>
+					<Route path="/" element={ <Home /> } exact />
+					<Route path="/coworkers" element={ <Coworkers /> } exact />
+				</Route>
 			</Routes>
 		</div>
 	)
 }
 
 export default App
+
