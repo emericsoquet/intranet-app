@@ -1,13 +1,27 @@
 import React from 'react'
+import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 
-import { userLogout } from '../features/user/user-slice'
+import userLogout from '../features/user/user-slice'
+import * as Storage from '../services/Storage'
 
 export default function Navbar() {
 
-    const userInfos = useSelector((state) => state.user.userInfo);
-    console.log(userInfos)
+    // des essais pour raccourcir Storage.getUser().payload.user
+    // Storage.getUser doit exister au préalable pour stocker objet dans une variable
+    // la condition if ne peut être que faite dans le hook useEffect et pas avant
+    // dans le useEffect, la valeur infos ne change pas, elle reste nulle SAUF si on sauvegarde à nouveau le fichier
+
+    /* const [infos, setInfos] = useState()
+
+    useEffect( () => {
+        if(Storage.getUser()) {
+            setInfos( Storage.getUser().payload.user )
+        }
+    }, [])
+    console.log(infos) */
+
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -15,38 +29,40 @@ export default function Navbar() {
 		event.preventDefault()
         dispatch( userLogout() )
         navigate('/login')
-		/* authentification(email, password)
-			.then( (data) => {
-				dispatch( userLogin(data) )
-				Storage.setToken(data.token)
-				Storage.setUserId(data.user.id)
-				navigate('/')
-			}) */
 	}
 
     return (
         <nav className="navbar navbar-expand-lg bg-light">
             <div className="container-fluid">
-                <a className="navbar-brand" href="#">Entreprise</a>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-                </button>
+                <NavLink className="navbar-brand" to="/">Entreprise</NavLink>
                 
 
-                    { (Object.keys(userInfos).length !== 0 && userInfos != null) && 
-                        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li className="nav-item">
-                                    <a className="nav-link" href="#">Collaborateurs</a>
-                                </li>
-                                <li>
-                                    <a className="nav-link">Profil de { userInfos.user.firstname }</a>
-                                </li>
-                                <li className="nav-item" onClick={ logOut }>
-                                    Déconnexion
-                                </li>
-                            </ul>
-                        </div>
+                    { Storage.getUser() && 
+                        <>
+                            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon"></span>
+                            </button>
+                            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                                    <li className="nav-item">
+                                        <span className="nav-link">
+                                            Bonjour <NavLink to="/profile">{Storage.getUser().firstname}</NavLink> !
+                                        </span>
+                                    </li>
+                                    <li className="nav-item">
+                                        <NavLink className="nav-link" to="/coworkers">Rencontrer l'équipe</NavLink>
+                                    </li>
+                                    { Storage.getUser().isAdmin &&
+                                        <li className="nav-item">
+                                            <NavLink className="nav-link" to="/addCoworker">Ajouter à l'équipe</NavLink>
+                                        </li>
+                                    }
+                                    <li className="nav-item">
+                                        <a className="nav-link" href="#" onClick={ logOut }>Déconnexion</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </>
                     }
                     
             </div>

@@ -9,15 +9,15 @@ import Navbar from './components/Navbar'
 import Login from './views/Login'
 import Home from './views/Home'
 import Coworkers from './views/Coworkers'
+import Profile from './views/Profile'
+import Error from './views/Error'
 
 function App() {
 
 	const navigate = useNavigate() 
 	const dispatch = useDispatch()
 
-	const user = useSelector((state) => state.user);
-	console.log(user)
-	
+	/* const user = useSelector((state) => state.user); */
 
 	/* if( Storage.getToken() ) {
 		const id = Storage.getUserId()
@@ -35,7 +35,9 @@ function App() {
 			<Routes>
 				<Route path="/login" element={ <Login /> } />
 				<Route path="/" element={ <Home /> } />
+				<Route path="/profile" element={ <Profile /> } />
 				<Route path="/coworkers" element={ <Coworkers /> } />
+				<Route path="*" element={ <Error /> }></Route>
 			</Routes>
 		</div>
 	)

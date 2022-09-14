@@ -1,17 +1,36 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { getUser } from '../services/users.service'
-import * as Storage from '../services/Storage'
-/* import { userInfos } from '../features/user/user-slice' */
+import { getRandom } from '../services/users.service'
 
 export default function Home() {
 
+	const [coworker, setCoworker] = useState()
+
+	useEffect( () => {
+		getRandom().then(element => setCoworker(element))
+	}, [])
+
+	const randomUser = async () => {
+		const response = await getRandom().catch( (error) => {
+			console.log(error)
+		})
+		return response
+	}
+
+	const newRandomUser = () => {
+		getRandom().then(coworker => setCoworker(coworker))
+	}
+	console.log(coworker)
 
 	return (
 		<section>
-			<p>Hello!</p>	
-			<p>Connais-tu ?</p>
+			{ coworker && 
+				<>
+					<h2>Connaissez-vous { coworker.firstname } ?</h2>
+					<button onClick={newRandomUser}>Charger</button>
+				</>
+			}
 		</section>
 	)
 }
