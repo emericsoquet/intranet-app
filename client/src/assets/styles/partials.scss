@@ -1,0 +1,8 @@
+// importe tous les fichiers partiels
+// fichier scss appelé dans chaque autre fichier scss pour ne pas appeler quatre fois ces autres fichiers
+
+@import 'variables/_colors.scss';
+@import 'variables/_fonts.scss';
+
+/* @import 'tools/_placeholders.scss'; */
+@import 'tools/_breakpoints.scss';

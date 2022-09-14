@@ -36,7 +36,7 @@ const Login = () => {
 						return <Navigate to="/" />
 					</>
 					:
-					<section>
+					<main className="login">
 						<h2>Se connecter</h2>
 						<form onSubmit={ handleSubmit }>
 		
@@ -58,7 +58,7 @@ const Login = () => {
 		
 							<button type="submit">S'identifier</button>
 						</form>
-					</section>
+					</main>
 			}
 		</>
 	)

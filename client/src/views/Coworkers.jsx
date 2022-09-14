@@ -61,7 +61,7 @@ export default function Coworkers() {
                     { coworkers && coworkers?.map( (element, index) => {
                         return ( 
                             <article key={ index }>
-                                <p>{ element.firstname }</p>
+                                <p>{ element.firstname } { element.lastname }</p>
                                 <p>{ element.city }, { element.country }</p>
                                 <p>{ element.service }</p>
                             </article>
@@ -73,9 +73,10 @@ export default function Coworkers() {
                     { filtered && filtered?.map( (element, index) => {
                         return ( 
                             <article key={ index }>
-                                <p>{ element.firstname }</p>
+                                <p>{ element.firstname } { element.lastname }</p>
                                 <p>{ element.city }, { element.country }</p>
                                 <p>{ element.service }</p>
+                                <p>{ element.gender }</p>
                             </article>
                         )
                     }) }

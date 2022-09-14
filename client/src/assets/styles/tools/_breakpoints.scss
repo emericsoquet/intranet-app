@@ -1,0 +1,25 @@
+// raccourci pour les media queries
+
+$breakpoints: ('mobile': 360px, 'xs': 420px, 'sm': 576px, 'md': 768px, 'lg': 992px, 'xl': 1200px, 'xxl': 1400px);
+
+@mixin min-width($breakpoint) {
+    @each $format, $pixel in $breakpoints {
+        @if($breakpoint == $format) {
+            @media screen and (min-width: $pixel) { @content; }
+        }
+        @else {
+            @media screen and (min-width: $breakpoint) { @content; }
+        }
+    }
+}
+
+@mixin max-width($breakpoint) {
+    @each $format, $pixel in $breakpoints {
+        @if($breakpoint == $format) {
+            @media screen and (max-width: $pixel) { @content; }
+        }
+        @else {
+            @media screen and (max-width: $breakpoint) { @content; }
+        }
+    }
+}

@@ -12,7 +12,7 @@ import Coworkers from './views/Coworkers'
 import Profile from './views/Profile'
 import Error from './views/Error'
 
-import { UserRoute } from './utils/PrivateRoutes'
+import { UsersRoute } from './utils/PrivateRoutes'
 
 function App() {
 
@@ -26,7 +26,7 @@ function App() {
 				<Route path="/login" element={ <Login /> } />
 				<Route path="/user/:id" element={ <Profile /> } />
 				<Route path="*" element={ <Error /> }></Route>
-				<Route element={ <UserRoute /> }>
+				<Route element={ <UsersRoute /> }>
 					<Route path="/" element={ <Home /> } exact />
 					<Route path="/coworkers" element={ <Coworkers /> } exact />
 				</Route>
