@@ -1,18 +1,37 @@
-import React from 'react'
-import * as Storage from '../services/Storage'
-import styles from '../assets/styles/components/Card.module.scss'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2/dist/sweetalert2.js'
 
+import * as Storage from '../services/Storage'
 import { removeUser } from '../services/manage.service'
 
-export default function Card( { data } ) {
+import styles from '../assets/styles/components/Card.module.scss'
+import 'sweetalert2/src/sweetalert2.scss'
+
+
+export default function Card( { data, unset, setUnset } ) {
 
     const remove = (id) => {
-        removeUser(id).then(
-            console.log('Utilisateur supprimé !')
-        ).catch( error => 
-            console.log(error.response) 
-        )
+        Swal.fire({
+            title: 'Suppression',
+            text: `Êtes-vous sûr(e) de vouloir supprimer ${data.firstname} ${data.lastname} de l'Intranet ?`,
+            icon: 'error',
+            confirmButtonText: 'Oui',
+            confirmButtonColor: '#f33930',
+            showCancelButton: 'true',
+            cancelButtonText: 'Non',
+            cancelButtonColor: '#ccc'
+          }).then( result => {
+            if (result['isConfirmed']) {
+                removeUser(id).then(
+                    setUnset(unset + 1)
+                ).catch( error => 
+                    console.log(error.response) 
+                )
+            } else { return }
+          })
+
     }
     
     return (
