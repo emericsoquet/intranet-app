@@ -20,6 +20,8 @@ const userSlice = createSlice({
             state.userInfo = {}
             localStorage.removeItem('token')
             localStorage.removeItem('user')
+            localStorage.removeItem('firstname')
+            localStorage.removeItem('photo')
         }
 
     }
