@@ -7,6 +7,10 @@ export async function updateUser(id, updatedProfile) {
 
 export async function addUser(newInfos) {
     const { data } = await instance.post(`/collaborateurs`, newInfos)
-    console.log(data)
+    return data
+}
+
+export async function removeUser(id) {
+    const { data } = await instance.delete(`/collaborateurs/${id}`)
     return data
 }

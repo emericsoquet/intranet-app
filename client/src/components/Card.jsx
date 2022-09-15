@@ -3,8 +3,18 @@ import * as Storage from '../services/Storage'
 import styles from '../assets/styles/components/Card.module.scss'
 import { Link } from 'react-router-dom'
 
+import { removeUser } from '../services/manage.service'
+
 export default function Card( { data } ) {
-    console.log(data)
+
+    const remove = (id) => {
+        removeUser(id).then(
+            console.log('Utilisateur supprimé !')
+        ).catch( error => 
+            console.log(error.response) 
+        )
+    }
+    
     return (
         <article className={`${styles.card} col-12 col-sm-5`}>
 
@@ -23,7 +33,7 @@ export default function Card( { data } ) {
 
                     { Storage.getUser().isAdmin &&
                         <>
-                            <button>Supprimer</button>
+                            <button onClick={ () => remove(data.id) }>Supprimer</button>
                             <Link to={`/user/${ data.id }`} >Modifier</Link>
                         </>
                     }
