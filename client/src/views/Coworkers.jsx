@@ -3,6 +3,9 @@ import * as Users from '../services/users.service'
 
 import { getCoworkers } from '../services/users.service'
 import Searchbar from '../components/Searchbar'
+import Card from '../components/Card'
+
+import styles from '../assets/styles/views/Coworkers.module.scss'
 
 export default function Coworkers() {
 
@@ -12,7 +15,7 @@ export default function Coworkers() {
     const [category, setCategory] = useState('') // select du service
 
     const [firstCall, setFirstCall] = useState(true) // première fois qu'on arrive sur la page
-    const [filtered, setFiltered] = useState([]) // tableau des pokémons recherchés
+    const [filtered, setFiltered] = useState([]) // tableau filtré
 
 	useEffect( () => {
 		getCoworkers().then(element => setCoworkers(element))
@@ -52,40 +55,31 @@ export default function Coworkers() {
 
 
     return (
-        <section className="container">
+        <main className="main">
+            <section className={`container ${styles.coworkers}`}>
 
-            <div className="row">
+                <div className="row">
+                    <Searchbar setSearch={ setSearch } setSearchType={ setSearchType } setCategory={ setCategory } />
+                </div>
 
-                <Searchbar setSearch={ setSearch } setSearchType={ setSearchType } setCategory={ setCategory } />
-
-                { (search === '' && category === '') ? // si le champ texte est vide et pas de service sélectionné
-                    <>
-                        { coworkers && coworkers?.map( (element, index) => {
-                            return ( 
-                                <article key={ index }>
-                                    <p>{ element.firstname } { element.lastname }</p>
-                                    <p>{ element.city }, { element.country }</p>
-                                    <p>{ element.service }</p>
-                                </article>
-                            )
-                        }) }
-                    </>
-                    : 
-                    <>
-                        { filtered && filtered?.map( (element, index) => {
-                            return ( 
-                                <article key={ index }>
-                                    <p>{ element.firstname } { element.lastname }</p>
-                                    <p>{ element.city }, { element.country }</p>
-                                    <p>{ element.service }</p>
-                                    <p>{ element.gender }</p>
-                                </article>
-                            )
-                        }) }
-                    </>
-                }
-                
-            </div>
-        </section>
+                <div className="row">
+                    <div className={`${ styles.wrapper } mx-auto row justify-content-between`}>
+                    { (search === '' && category === '') ? // si le champ texte est vide et pas de service sélectionné
+                        <>
+                            { coworkers && coworkers?.map( (element, index) => {
+                                return <Card key={ index } data={ element } />      
+                            }) }
+                        </>
+                        : 
+                        <>
+                            { filtered && filtered?.map( (element, index) => {
+                                return <Card key={ index } data={ element } />   
+                            }) }
+                        </>
+                    }
+                    </div>
+                </div>
+            </section>
+        </main>
     )
 }

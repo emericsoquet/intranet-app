@@ -1,48 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
+import React from 'react'
 
-import { getUser } from '../services/users.service'
-import { updateUser } from '../services/manage.service'
-
-import { update } from '../features/user/user-slice'
-import { setUser } from '../features/profile/profile-slice'
-
-import * as Storage from '../services/Storage'
-
-export default function Profile() {
-
-    const[profile, setProfile] = useState()
-
-    // récupération de l'id dans l'url après "user/"
-    const params = useParams()
-    const user = useSelector((state) => state.user)
-    console.log(user)
-
-    useEffect( () => {
-		getUser(params.id).then(element => setProfile(element))
-	}, [])
-
-    const updateProfile = (event) => {
-        event.preventDefault()
-		updateUser(params.id, profile).then(
-            Storage.setUser(profile)
-        ).catch( error => 
-            console.log(error.response) 
-        )
-	}
-
-    const handleChanges = (event) => {
-        const { value, name } = event.target
-        setProfile( {...profile, [name]: value} )
-        console.log(profile)
-    }
-
+export default function AddUser() {
     return (
-
-        profile && 
-            <section>
-                <h2>Profil de { profile.firstname }</h2>
+        <section>
+                <h2>Ajout d'un utilisateur</h2>
                 <form onSubmit={ updateProfile }>
 
                     <div className="input-group">

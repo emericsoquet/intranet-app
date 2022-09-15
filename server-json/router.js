@@ -86,12 +86,12 @@ function updateCollaborateur(req, res) {
   if (!collaborateur)
     return res.status(404).send({ error: 'Collaborateur introuvable' });
 
-  const userModified = { ...req.body, id };
+  const userModified = { ...req.body, id, password: collaborateur.password };
 
   Promise.resolve(userModified)
     .then((userModified) => {
-      if (userModified.password) {
-        return bcrypt.hash(userModified.password, 10).then((passwordHashed) => {
+      if (req.body.password) {
+        return bcrypt.hash(req.body.password, 10).then((passwordHashed) => {
           userModified.password = passwordHashed;
           return userModified;
         });

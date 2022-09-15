@@ -1,0 +1,43 @@
+@import '../partials.scss';
+
+.card {
+
+    .wrapper {
+        background: $light;
+        color: $dark;
+        margin: 2rem 0 2rem 60px;
+        font-family: $headings;
+        font-weight: 300;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba($dark, .1);
+        position: relative;
+        display: flex;
+    }
+
+    figure {
+        left: -60px;
+        top: 50%;
+        transform: translateY(-50%);
+        position: absolute;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        border-radius: 100%;
+        border: 10px solid red;
+        img {
+            overflow: hidden;
+            border-radius: 100%;
+        }
+    }
+
+
+    .infos {
+        padding: 1.5rem 1rem;
+        margin-left: 110px;
+
+        p {
+            margin: .25rem 0;
+            font-size: .9rem;
+        }
+    }
+}

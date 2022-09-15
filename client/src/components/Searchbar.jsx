@@ -20,7 +20,7 @@ const Searchbar = ({ setSearch, setSearchType, setCategory }) => {
 
     return (
         // à chaque changement de la valeur de l'input, handleSearch la garde en mémoire et la donne à Listing.jsx
-        <form role="search" className="col-10 mx-auto" onChange={ handleSearch }>
+        <form role="search" onChange={ handleSearch }>
             <label htmlFor="search-coworker">Chercher parmi les collaborateurs</label>
             <div className="input-group">
                 <input type="text" className="form-control" id="search-coworker" ref={inputValue} />

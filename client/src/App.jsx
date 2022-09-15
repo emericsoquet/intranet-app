@@ -10,6 +10,7 @@ import Login from './views/Login'
 import Home from './views/Home'
 import Coworkers from './views/Coworkers'
 import Profile from './views/Profile'
+import AddUser from './views/AddUser'
 import Error from './views/Error'
 
 import { UsersRoute } from './utils/PrivateRoutes'
@@ -30,6 +31,7 @@ function App() {
 					<Route path="/" element={ <Home /> } exact />
 					<Route path="/coworkers" element={ <Coworkers /> } exact />
 				</Route>
+				<Route path="/addUser" element={ <AddUser /> }></Route>
 			</Routes>
 		</div>
 	)
