@@ -25,6 +25,8 @@ const Login = () => {
 				dispatch( userLogin(data) )
 				Storage.setToken(data.token)
 				Storage.setUser(data.user)
+				Storage.setItem('firstname', data.user.firstname)
+				Storage.setItem('photo', data.user.photo)
 				navigate('/')
 			})
 	}

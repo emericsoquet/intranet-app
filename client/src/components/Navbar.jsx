@@ -15,15 +15,13 @@ export default function Navbar() {
     // la condition if ne peut être que faite dans le hook useEffect et pas avant
     // dans le useEffect, la valeur infos ne change pas, elle reste nulle SAUF si on sauvegarde à nouveau le fichier
 
-    /* const [infos, setInfos] = useState()
 
-    useEffect( () => {
+    /* useEffect( () => {
         if(Storage.getUser()) {
-            setInfos( Storage.getUser().payload.user )
+            setPhoto( Storage.getUser().payload.user )
         }
-    }, [])
-    console.log(infos) */
-
+    }, []) */
+    
     const dispatch = useDispatch()
     const navigate = useNavigate()
 

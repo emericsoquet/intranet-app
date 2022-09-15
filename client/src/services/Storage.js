@@ -5,6 +5,13 @@ export const getToken = () => {
     return window.localStorage.getItem('token');
 }
 
+export const setItem = (state, data) => {
+  localStorage.setItem(`${ state }`, data)
+}
+export const getItem = (state) => {
+  return window.localStorage.getItem(`${ state }`);
+}
+
 export const setUser = (user) => {
     try {
       const serializedState = JSON.stringify(user);

@@ -5,9 +5,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getUser } from '../services/users.service'
 import { updateUser } from '../services/manage.service'
 
-import { update } from '../features/user/user-slice'
-import { setUser } from '../features/profile/profile-slice'
-
 import * as Storage from '../services/Storage'
 
 export default function Profile() {
@@ -26,7 +23,7 @@ export default function Profile() {
     const updateProfile = (event) => {
         event.preventDefault()
 		updateUser(params.id, profile).then(
-            Storage.setUser(profile)
+            console.log('SUCCESS!')
         ).catch( error => 
             console.log(error.response) 
         )
