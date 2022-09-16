@@ -13,13 +13,13 @@ export default function Profile() {
     const[profile, setProfile] = useState()
 
     // récupération de l'id dans l'url après "user/"
-    const userId = Storage.getUser().id
+    const params = useParams()
     const user = useSelector((state) => state.user)
     console.log(user)
 
     useEffect( () => {
-		getUser(userId).then(element => setProfile(element))
-	}, [])
+		getUser(params.id).then(element => setProfile(element))
+	}, [params.id])
 
     const updateProfile = (event) => {
         event.preventDefault()
@@ -46,6 +46,7 @@ export default function Profile() {
     const handleChanges = (event) => {
         const { value, name } = event.target
         setProfile( {...profile, [name]: value} )
+        console.log(profile)
     }
 
     return (

@@ -27,8 +27,9 @@ const Login = () => {
 				Storage.setUser(data.user)
 				Storage.setItem('firstname', data.user.firstname)
 				Storage.setItem('photo', data.user.photo)
+				Storage.setItem('id', data.user.id)
 				navigate('/')
-			})
+			}).catch( error => console.log(error.response))
 	}
 
 

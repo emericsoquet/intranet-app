@@ -10,10 +10,11 @@ import Login from './views/Login'
 import Home from './views/Home'
 import Coworkers from './views/Coworkers'
 import Profile from './views/Profile'
+import ModifyUser from './views/ModifyUser'
 import AddUser from './views/AddUser'
 import Error from './views/Error'
 
-import { UsersRoute } from './utils/PrivateRoutes'
+import { UsersRoute, AdminRoute } from './utils/PrivateRoutes'
 
 function App() {
 
@@ -24,14 +25,29 @@ function App() {
 		<div className="App">
 			<Navbar />
 			<Routes>
+
 				<Route path="/login" element={ <Login /> } />
-				<Route path="/user/:id" element={ <Profile /> } />
 				<Route path="*" element={ <Error /> }></Route>
+
 				<Route element={ <UsersRoute /> }>
+
 					<Route path="/" element={ <Home /> } exact />
 					<Route path="/coworkers" element={ <Coworkers /> } exact />
+					
+					{ Storage.getUser() && 
+						<Route path={`/user/${Storage.getUser().id}`} element={ <Profile /> } />
+					}
+
+					<Route element={ <AdminRoute /> }>
+						<Route path="/addUser" element={ <AddUser /> } />
+						<Route path="/user/:id" element={ <ModifyUser /> } />
+					</Route>
+
+					{/* <Route element={ <SpecificUsersRoute id={ Storage.getItem('id') } /> }>
+						
+					</Route> */}
 				</Route>
-				<Route path="/addUser" element={ <AddUser /> }></Route>
+				
 			</Routes>
 		</div>
 	)
