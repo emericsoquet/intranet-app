@@ -46,7 +46,7 @@ const Login = () => {
 								<h2>Connexion</h2>
 
 								<p className={styles.subtitle}>
-									Pour accéder à l'Intranet d'O'Communication, <span>veuillez remplir ces champs</span>
+									Pour accéder à l'Intranet O'Communication, <span>veuillez remplir ces champs</span>
 								</p>
 								<form onSubmit={ handleSubmit }>
 				

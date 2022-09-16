@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 import { getUser } from '../services/users.service'
 import { updateUser } from '../services/manage.service'
@@ -18,15 +19,34 @@ export default function Profile() {
 
     useEffect( () => {
 		getUser(params.id).then(element => setProfile(element))
-	}, [])
+	}, [params.id])
 
     const updateProfile = (event) => {
         event.preventDefault()
-		updateUser(params.id, profile).then(
-            console.log('SUCCESS!')
+
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'bottom-end',
+            timer: 5000,
+            timerProgressBar: true,
+            showConfirmButton: false
+        })
+
+        updateUser(params.id, profile).then(
+            console.log('SUCCESS!'),
+            Toast.fire({
+                title: `Le profil a bien été modifié`,
+                icon: 'success',
+            })
         ).catch( error => 
             console.log(error.response) 
         )
+
+		/* updateUser(params.id, profile).then(
+            console.log('SUCCESS!')
+        ).catch( error => 
+            console.log(error.response) 
+        ) */
 	}
 
     const handleChanges = (event) => {

@@ -7,7 +7,6 @@ import * as Storage from '../services/Storage'
 import { removeUser } from '../services/manage.service'
 
 import styles from '../assets/styles/components/Card.module.scss'
-import 'sweetalert2/src/sweetalert2.scss'
 
 
 export default function Card( { data, unset, setUnset } ) {

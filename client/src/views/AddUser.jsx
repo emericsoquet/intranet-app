@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { addUser } from '../services/manage.service'
+import Swal from 'sweetalert2/dist/sweetalert2.js'
 
+import { addUser } from '../services/manage.service'
 import * as Storage from '../services/Storage'
 
 export default function AddUser() {
@@ -24,18 +25,29 @@ export default function AddUser() {
 
     const addNewUser = (event) => {
         event.preventDefault()
+    
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'bottom-end',
+            timer: 5000,
+            timerProgressBar: true,
+            showConfirmButton: false
+        })
+
         addUser(newUser).then(
-            console.log('SUCCESS!')
+            console.log('SUCCESS!'),
+            Toast.fire({
+                title: `${newUser.firstname} a bien été ajouté${ newUser.gender === 'female' ? 'e' : '' } à l'Intranet`,
+                icon: 'success',
+            })
         ).catch( error => 
             console.log(error.response) 
         )
     }
 
     const handleAddition = (event) => {
-
         const user = { ...newUser }
         const { value, name } = event.target
-        
         user[name] = value
         setNewUser(user)
         // l'objet n'est pas réitérable

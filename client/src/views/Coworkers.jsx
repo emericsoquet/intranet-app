@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 import { getCoworkers } from '../services/users.service'
 import Searchbar from '../components/Searchbar'
