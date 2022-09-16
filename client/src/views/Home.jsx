@@ -20,7 +20,6 @@ export default function Home() {
 	const newRandomUser = () => {
 		getRandom().then(coworker => setCoworker(coworker))
 	}
-	console.log(coworker)
 
 	return (
 		<main className={`main`}>

@@ -7,6 +7,7 @@ import { faPhone, faPaperPlane, faCakeCandles } from '@fortawesome/free-solid-sv
 
 import * as Storage from '../services/Storage'
 import { removeUser } from '../services/manage.service'
+import { ConvertDate } from '../utils/Convert'
 
 import styles from '../assets/styles/components/Card.module.scss'
 
@@ -55,9 +56,8 @@ export default function Card( { data, unset, setUnset } ) {
                         <span><a href={`tel:${data.phone.split('-').join('')}`}><FontAwesomeIcon icon={faPhone} /></a></span>
                         <span><a href={`mailto:${data.email}`}><FontAwesomeIcon icon={faPaperPlane} /></a></span>
                         <div className={`${styles.tooltip}`}>
-                            
                             <span><FontAwesomeIcon icon={faCakeCandles} /></span>
-                            <div className={`${styles.birthday}`}>{ data.birthdate }</div>
+                            <div className={`${styles.birthday}`}>{ ConvertDate( data.birthdate ) }</div>
                         </div>
                     </div>
 

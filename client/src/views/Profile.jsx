@@ -15,7 +15,6 @@ export default function Profile() {
     // récupération de l'id dans l'url après "user/"
     const userId = Storage.getUser().id
     const user = useSelector((state) => state.user)
-    console.log(user)
 
     useEffect( () => {
 		getUser(userId).then(element => setProfile(element))

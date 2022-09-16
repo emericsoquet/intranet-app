@@ -39,4 +39,10 @@
         padding: 10px 20px;
         border: transparentize($light, .65) 2px solid;
     }
+    .groupSelect {
+        width: 100%;
+        @include min-width(lg) {
+            width: 47.5%;
+        }
+    }
 }

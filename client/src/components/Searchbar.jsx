@@ -27,20 +27,22 @@ const Searchbar = ({ setSearch, setSearchType, setCategory }) => {
             <div className="input-group">
                 <input type="text" className="form-control" id="search-coworker" ref={inputValue} />
             </div>
-            <div className="input-group">
-                <select className="form-select" aria-label="Default select example" ref={typeValue}>
-                    <option value="name">Nom</option>
-                    <option value="city">Ville</option>
-                </select>
-            </div>
-            <div className="input-group">
-                <select className="form-select" aria-label="Default select example" ref={categoryValue}>
-                    <option value="">-- Choisir un service --</option>
-                    <option value="marketing">Marketing</option>
-                    <option value="technique">Technique</option>
-                    <option value="client">Client</option>
-                </select>
-            </div>
+            <fieldset className="d-flex justify-content-between flex-wrap">
+                <div className={`input-group ${ styles.groupSelect }`}>
+                    <select className="form-select" aria-label="Default select example" ref={typeValue}>
+                        <option value="name">Nom</option>
+                        <option value="city">Ville</option>
+                    </select>
+                </div>
+                <div className={`input-group ${ styles.groupSelect }`}>
+                    <select className="form-select" aria-label="Default select example" ref={categoryValue}>
+                        <option value="">-- Choisir un service --</option>
+                        <option value="marketing">Marketing</option>
+                        <option value="technique">Technique</option>
+                        <option value="client">Client</option>
+                    </select>
+                </div>
+            </fieldset>
         </form>
     )
 }
