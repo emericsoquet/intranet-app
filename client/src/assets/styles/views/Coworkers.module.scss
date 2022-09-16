@@ -4,4 +4,19 @@
     .wrapper {
         margin: 3rem auto;
     }
+
+    .searchbar {
+        width: 90%;
+        max-width: 340px;
+        margin: 2rem auto;
+        @include min-width(lg) {
+            margin: 3rem auto 3rem auto;
+        }
+        @include min-width(md) {
+            max-width: none;
+        }
+        @include min-width(xl) {
+            max-width: 1000px;
+        }
+    }
 }

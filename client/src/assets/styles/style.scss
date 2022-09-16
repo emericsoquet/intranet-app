@@ -3,6 +3,7 @@
 body {
     padding: 0;
     margin: 0;
+    /* background: transparentize(#000000, .2); */
     background: rgb(164,98,173);
     background: -moz-linear-gradient(180deg, rgba(164,98,173,1) 40%, rgba(176,118,184,1) 68%, rgba(194,148,200,1) 100%);
     background: -webkit-linear-gradient(180deg, rgba(164,98,173,1) 40%, rgba(176,118,184,1) 68%, rgba(194,148,200,1) 100%);
@@ -19,5 +20,14 @@ body {
 
     .main {
         min-height: calc(100vh - 70px);
+    }
+
+    .border {
+        &-feminine {
+            border-color: transparentize($feminine, .1);
+        }
+        &-masculine {
+            border-color: transparentize($masculine, .1);
+        }
     }
 }

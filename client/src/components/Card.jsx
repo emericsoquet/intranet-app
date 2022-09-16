@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2/dist/sweetalert2.js'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPhone, faPaperPlane, faCakeCandles } from '@fortawesome/free-solid-svg-icons'
 
 import * as Storage from '../services/Storage'
 import { removeUser } from '../services/manage.service'
@@ -30,32 +32,43 @@ export default function Card( { data, unset, setUnset } ) {
                 )
             } else { return }
           })
-
     }
     
     return (
-        <article className={`${styles.card} col-12 col-sm-5`}>
+        <article className={`${styles.card} col-12 col-md-5 col-xl-4`}>
 
             <div className={`${styles.wrapper}`}>
-                <figure>
+                <figure className={ data.gender == 'female' ? 'border-feminine' : 'border-masculine' }>
                     <img src={ data.photo } />
                 </figure>
 
                 <div className={`${styles.infos}`}>
-                    <h3>{ data.firstname } { data.lastname }</h3>
-                    <p>{ data.city }, { data.country }</p>
-                    <p>{ data.service }</p>
-                    <p>{ data.phone }</p>
-                    <p>{ data.birthdate }</p>
-                
 
-                    { Storage.getUser().isAdmin &&
-                        <>
-                            <button onClick={ () => remove(data.id) }>Supprimer</button>
-                            <Link to={`/user/${ data.id }`} >Modifier</Link>
-                        </>
-                    }
+                    <h3>{ data.firstname } { data.lastname }</h3>
+
+                    <div className={`${styles.sector}`}>
+                        <p>{ data.city }, { data.country }</p>
+                        <p>{ data.service }</p>
+                    </div>
+
+                    <div className={`${styles.contact}`}>
+                        <span><a href={`tel:${data.phone.split('-').join('')}`}><FontAwesomeIcon icon={faPhone} /></a></span>
+                        <span><a href={`mailto:${data.email}`}><FontAwesomeIcon icon={faPaperPlane} /></a></span>
+                        <div className={`${styles.tooltip}`}>
+                            
+                            <span><FontAwesomeIcon icon={faCakeCandles} /></span>
+                            <div className={`${styles.birthday}`}>{ data.birthdate }</div>
+                        </div>
+                    </div>
+
                 </div>
+
+                { Storage.getUser().isAdmin &&
+                    <div className={`${styles.buttons}`}>
+                        <Link to={`/user/${ data.id }`} className={`${styles.button}`} >Modifier</Link>
+                        <button onClick={ () => remove(data.id) } className={`${styles.button}`}>Supprimer</button>
+                    </div>
+                }
             </div>
         </article>
     )

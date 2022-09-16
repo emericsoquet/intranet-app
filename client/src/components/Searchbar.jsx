@@ -1,6 +1,8 @@
 // dependencies
 import React, { useRef } from 'react'
 
+import styles from '../assets/styles/components/Searchbar.module.scss'
+
 // setSearch en props pour donner le résultat de la recherche à la view Listing.jsx
 const Searchbar = ({ setSearch, setSearchType, setCategory }) => {
 
@@ -20,8 +22,8 @@ const Searchbar = ({ setSearch, setSearchType, setCategory }) => {
 
     return (
         // à chaque changement de la valeur de l'input, handleSearch la garde en mémoire et la donne à Listing.jsx
-        <form role="search" onChange={ handleSearch }>
-            <label htmlFor="search-coworker">Chercher parmi les collaborateurs</label>
+        <form role="search" onChange={ handleSearch } className={`col-12 ${ styles.form }`}>
+            <label htmlFor="search-coworker">Découvrir l'équipe</label>
             <div className="input-group">
                 <input type="text" className="form-control" id="search-coworker" ref={inputValue} />
             </div>
@@ -39,7 +41,6 @@ const Searchbar = ({ setSearch, setSearchType, setCategory }) => {
                     <option value="client">Client</option>
                 </select>
             </div>
-            
         </form>
     )
 }

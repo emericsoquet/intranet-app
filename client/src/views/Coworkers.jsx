@@ -33,7 +33,9 @@ export default function Coworkers() {
                 setFiltered(coworkers?.filter( 
                     element => (
                         ( element.firstname.toLowerCase().match(searchString.toLowerCase()) 
-                        || element.firstname.toLowerCase().match(search.toLowerCase()) )
+                        || element.firstname.toLowerCase().match(search.toLowerCase())
+                        || element.lastname.toLowerCase().match(searchString.toLowerCase())
+                        || element.lastname.toLowerCase().match(search.toLowerCase()) )
                         && element.service.toLowerCase().match(category.toLowerCase())
                     ))
                 )
@@ -53,12 +55,12 @@ export default function Coworkers() {
         <main className="main">
             <section className={`container ${styles.coworkers}`}>
 
-                <div className="row">
+                <div className={`row ${styles.searchbar}`}>
                     <Searchbar setSearch={ setSearch } setSearchType={ setSearchType } setCategory={ setCategory } />
                 </div>
 
                 <div className="row">
-                    <div className={`${ styles.wrapper } mx-auto row justify-content-between`}>
+                    <div className={`${ styles.wrapper } mx-auto row justify-content-between justify-content-xl-start`}>
                     { (search === '' && category === '') ? // si le champ texte est vide et pas de service sélectionné
                         <>
                             { coworkers && coworkers?.map( (element, index) => {

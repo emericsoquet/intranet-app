@@ -53,7 +53,7 @@ const Login = () => {
 				
 									<label htmlFor="email">E-mail</label>
 									<input 	type="text"
-											placeholder="Votre adresse mail" 
+											placeholder="prenom.nom@example.com" 
 											id="email"
 											onChange={ (event) => setEmail(event.target.value) }
 											required >
