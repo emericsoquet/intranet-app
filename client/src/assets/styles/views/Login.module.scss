@@ -8,13 +8,16 @@
     .wrapper {
         max-width: 400px;
         background: $light;
-        border-radius: 10px;
+        /* border-radius: 10px; */
         box-shadow: 0 0 10px rgba($dark, .1);
         font-size: 300;
         color: $dark;
         padding: 30px;
         padding-bottom: 6.5rem;
         position: relative;
+        @include min-width(401px) {
+            border-radius: 10px;
+        }
 
         h2 {
             text-transform: lowercase;
@@ -77,11 +80,14 @@
             padding: 1rem;
             font-size: 1.15rem;
             overflow: hidden;
-            border-radius: 0 0 10px 10px;
+            /* border-radius: 0 0 10px 10px; */
             background: $primaryBtn;
             transition: background .4s;
             &:hover {
                 background: darken($primaryBtn, 10%);
+            }
+            @include min-width(401px) {
+                border-radius: 0 0 10px 10px;
             }
         }
     }

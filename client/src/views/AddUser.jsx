@@ -55,7 +55,7 @@ export default function AddUser() {
     }
 
     return (
-        <section onSubmit={ addNewUser }>
+        <section className='main' onSubmit={ addNewUser }>
                 <h2>Ajout d'un utilisateur</h2>
                 <form>
 

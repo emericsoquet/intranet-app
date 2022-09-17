@@ -5,6 +5,5 @@ export async function authentification( email, password ) {
         email: email, 
         password: password
     })
-    console.log(data)
     return data
 }

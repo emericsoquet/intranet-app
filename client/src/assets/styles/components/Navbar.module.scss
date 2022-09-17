@@ -84,7 +84,7 @@ nav {
     .profile {
         margin-right: .75rem;
         color: transparentize($dark, .4);
-        &:hover {
+        &:hover, &:focus, &:focus-within {
             color: $dark;
         }
         .avatar {
