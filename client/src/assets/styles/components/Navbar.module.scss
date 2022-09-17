@@ -2,4 +2,104 @@
 
 nav {
     padding: 15px !important;
+    box-shadow: 0 10px 20px transparentize($light, .95);
+
+    font-size: .85rem;
+    text-transform: uppercase;
+    font-weight: 700;
+
+    .brand {
+        figure {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            margin: 0;
+            img {
+                height: 50px;
+            }
+        }
+
+        .logoLarge {
+            display: none;
+            @include min-width(sm) {
+                display: inline-block;
+            }
+        }
+        .logoMini {
+            @include min-width(sm) {
+                display: none;
+            }
+        }
+    }
+
+    ul {
+        li {
+            display: flex;
+            align-items: center;
+            margin: 0 1rem;
+            @include min-width(lg) {
+                margin: 0 .1rem;
+            }
+            @include min-width(xl) {
+                margin: 0 .5rem;
+            }
+            &:last-child {
+                margin-right: -.5rem;
+                @include min-width(md) {
+                    margin-right: 0;
+                }
+            }
+            a {
+                display: flex;
+                align-items: center;
+                color: transparentize($dark, .4);
+                &:hover {
+                    color: $dark;
+                }
+
+                .linkText {
+                    display: none;
+                    @include min-width(lg) {
+                        display: inline-block;
+                    }
+                }
+            }
+            svg {
+                margin-right: .25rem;
+                font-size: .9rem;
+                @include min-width(sm) {
+                    font-size: 1.15rem;
+                }
+                @include min-width(lg) {
+                    margin-right: .75rem;
+                    font-size: .9rem;
+                }
+                @include min-width(xl) {
+                    font-size: 1.15rem;
+                }
+            }
+        }
+    }
+
+    .profile {
+        margin-right: .75rem;
+        color: transparentize($dark, .4);
+        &:hover {
+            color: $dark;
+        }
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 100%;
+            @include min-width(md) {
+                margin-right: 1.15rem;
+            }
+        }
+        span {
+            display: none;
+            @include min-width(md) {
+                display: inline-block;
+            }
+        }
+    }
 }
