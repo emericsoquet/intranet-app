@@ -1,14 +1,14 @@
-// dependencies
+// dépendances
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, Navigate } from 'react-router-dom'
 
-// slices & storage
+// outils, features & services
 import { authentification } from '../services/auth.service'
 import { userLogin } from '../features/user/user-slice'
 import * as Storage from '../services/Storage'
 
-// styles
+// feuilles de style
 import styles from '../assets/styles/views/Login.module.scss'
 
 const Login = () => {
