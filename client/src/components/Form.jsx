@@ -116,11 +116,13 @@ export default function Form({ setProfile, profile }) {
                         <label htmlFor='userPassword'>Mot de passe</label>
                         <input  type="password" defaultValue={ profile.password } onChange={handleChanges} 
                                 id="userPassword" name="password"
+                                minLength={8}
                                 placeholder="••••••••"></input>
                     </div>
                     <div className={` input.group ${ styles.inputGroup } ${ styles.inputGroupTwo }`}>
                         <label htmlFor='userConfirmPassword'>Confirmation</label>
                         <input  type="text"
+                                minLength={8}
                                 id="userConfirmPassword" name="confirmPassword"></input>
                     </div>
                 </fieldset>
